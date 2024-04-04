@@ -1,0 +1,80 @@
+.game-score{
+    width: 100%;
+    max-width: 705px;
+    height: 152px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border: hsl(217, 16%, 45%) solid 3px;
+    border-radius: 10px;
+}
+
+.game-set-score-value{
+    width: 150px;
+    height: 115px;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.game-set-score-value span:nth-child(1){
+    color: hsl(229, 64%, 46%);
+    letter-spacing: 3px;
+}
+
+.game-set-score-value span:nth-child(2){
+    color: hsl(217, 16%, 45%);
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+    .game-score{
+        max-width: 550px;
+        padding: 10px;
+    }
+    
+}
+
+@media (max-width: 500px) {
+    .game-score{
+        max-width: 315px;
+        height: 100px;
+    }
+
+    .game-choices-items-logo {
+        display: flex;
+        justify-self: center;
+        align-items: center;
+
+        padding: 10px;
+    }
+
+    .game-choices-items-logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .game-set-score-value {
+        width: 80px;
+        height: 70px;
+    }
+
+    .game-set-score-value span:nth-child(1){
+        font-size: 12px;
+        font-weight: 700;
+    }
+    
+    .game-set-score-value span:nth-child(2){
+        color: hsl(217, 16%, 45%);
+        font-size: 40px;
+        font-weight: 700;
+    }
+    
+}

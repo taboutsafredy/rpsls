@@ -1,0 +1,39 @@
+.all-about-rules,
+.rules-descriptions{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: hsl(0, 0%, 100%);
+}
+
+.rules-descriptions .rules-title{
+    font-weight: 700;
+    width: 130px;
+    height: 42px;
+    border: solid hsl(217, 16%, 45%) 3px;
+    box-shadow: 0px 2px 0 hsl(217, 16%, 45%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 32px;
+    transition: transform 0.3s;
+}
+
+
+.rules-descriptions .rules-title:hover{
+    transform: translateY(-5px);
+    transition: transform 0.4s;
+}
+
+@media (max-width: 500px) {
+    .rules-descriptions {
+        justify-content: center;
+    }
+
+    .rules-descriptions .rules-title {
+        margin-right: 0;
+    }
+}

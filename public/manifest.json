@@ -1,0 +1,15 @@
+{
+  "short_name": "rps Game",
+  "name": "Rock Paper Scissors Lizard and Spock Game",
+  "icons": [
+    {
+      "src": "logo192.svg",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

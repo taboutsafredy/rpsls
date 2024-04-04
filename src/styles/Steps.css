@@ -1,0 +1,356 @@
+.game {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: hsl(0, 0%, 100%);
+}
+
+.game-step-one {
+    width: 100%;
+    min-width: 475px;
+    height: 475px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background: url("../assets/images/bg-pentagon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 400px;
+
+}
+
+.item-of-game {
+    width: 145px;
+    height: 145px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 20px solid #bebebe;
+    border-radius: 50%;
+    padding: 20px;
+    background-color: hsl(0, 0%, 100%);
+    transition: width 0.2s, height 0.2s, transform 1s;
+    cursor: pointer;
+}
+
+.item-of-game:hover {
+    transform: translateY(-5px);
+    width: 147px;
+    height: 147px;
+    transition: width 0.2s, height 0.2s, transform 1s;
+}
+
+.item-of-game img  {
+    width: 80%;
+}
+
+.spock-and-paper, .rock-and-lizard {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.spock-and-paper {
+    justify-content: space-between;
+    padding-bottom: 35px;
+}
+
+
+.rock-and-lizard {
+    justify-content: center;
+    gap: 50px;
+}
+
+.scissors{
+    border-color: hsl(39, 89%, 49%);
+    box-shadow: 0 5px 0 hsl(40, 84%, 53%);
+}
+
+.spock{
+    border-color: hsl(189, 59%, 53%);
+    box-shadow: 0 5px 0  hsl(189, 58%, 57%);
+}
+
+.paper{
+    border-color: hsl(230, 89%, 62%);
+    box-shadow: 0 5px 0  hsl(230, 89%, 65%);
+}
+
+.rock{
+    border-color: hsl(349, 71%, 52%);
+    box-shadow: 0 5px 0  hsl(349, 70%, 56%);
+}
+.lizard{
+    border-color: hsl(261, 73%, 60%);
+    box-shadow: 0 5px 0  hsl(261, 72%, 63%);
+}
+
+
+.game-step-two {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 75px;
+}
+
+.game-step-two .item-of-game {
+    width: 290px;
+    height: 290px;
+    border-width: 35px;
+    cursor: initial;
+    animation: none;
+}
+
+
+.game-step-two .item-of-game:hover {
+    transform: none;
+    transition: none;
+}
+
+.game-step-two .item-of-game.animate {
+    animation: winner 3s ease; 
+}
+
+@keyframes winner {
+    0% { transform: rotate(0deg); width: 0; }
+    100% { transform: rotate(360deg); width: auto;}
+}
+
+.game-step-two .item-of-game img  {
+    width: 60%;
+}
+
+
+.player-picked, .the-house-picked {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+
+}
+
+.lose-or-win {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    animation: setResult 1s ease-in;
+}
+
+@keyframes setResult {
+    0% {width: 0;}
+    100% {width: 220px;}
+}
+
+.lose-or-win h1 {
+    letter-spacing: 1px;
+    font-size: 40px;
+}
+
+.play-again-btn {
+    width: 100%;
+    height: 50px;
+    background: hsl(0, 0%, 100%);
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.play-again-btn:hover{
+    transform: translateY(-5px);
+    transition: transform 0.4s;
+}
+
+
+.set-other-game {
+    color: hsl(229, 25%, 31%);
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+@media (max-width: 950px) {
+    .game-step-two {
+        max-width: 900px;
+    }
+
+    .game-step-two .item-of-game {
+        width: 200px;
+        height: 200px;
+
+    }
+
+    .lose-or-win {
+        width: 150px;
+    }
+
+    .lose-or-win h1 {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 700px) {
+    .game-step-two {
+        max-width: 650px;
+        gap: 30px;
+    }
+
+    .game-step-two .item-of-game {
+        width: 150px;
+        height: 150px;
+        border-width: 20px;
+
+    }
+    
+    .lose-or-win {
+        width: 130px;
+    }
+
+    .lose-or-win h1 {
+        letter-spacing: .5px;
+        font-size: 30px;
+    }
+
+    .game-step-two .player-picked h2 , 
+    .game-step-two .the-house-picked h2 {
+        font-size: 19px;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .game-step-one {
+        min-width: auto;
+        max-width: 375px;
+        max-height: 375px;
+    
+        background-size:300px;
+    }
+
+    .item-of-game {
+        width: 90px;
+        height: 90px;
+        border-width: 10px;
+ 
+    }
+
+    .item-of-game:hover {
+        transform: translateY(-5px);
+        width: 92px;
+        height: 92px;
+        transition: width 0.2s, height 0.2s, transform 1s;
+    }
+
+    .spock-and-paper {
+        justify-content: center;
+        gap: 150px;
+    }
+
+    .item-of-game img {
+        width: 100%;
+    }
+
+    .game-step-two {
+        width: 100%;
+    
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .game-step-two .item-of-game {
+        width: 130px;
+        height: 130px;
+        border-width: 20px;
+    }
+    
+    .game-step-two .player-picked, 
+    .game-step-two .the-house-picked {
+        flex-direction: column-reverse;
+        gap: 30px;
+    
+    }
+
+    .game-step-two .player-picked h2 , 
+    .game-step-two .the-house-picked h2 {
+        font-size: 16px;
+    }
+
+    .game-step-two .player-picked {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    .game-step-two .the-house-picked {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    
+    .game-step-two .lose-or-win {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+
+        width: 100%;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .lose-or-win {
+        animation: none;
+    }
+
+    .lose-or-win h1 {
+        letter-spacing: .5px;
+        font-size: 30px;
+
+        animation: animateTitle 5s ease;
+    }
+
+    @keyframes animateTitle {
+        0%{opacity: 0;}
+        100%{opacity: 1;}
+    }
+
+    .lose-or-win .play-again-btn {
+        width: 220px;
+        background: hsl(0, 0%, 100%);
+    }
+
+}
+
+@media (max-width: 330px) {
+    .game-step-one {
+        min-width: auto;
+        max-width: 325px;
+        max-height: 325px;
+        
+        background-size:250px;
+    }
+
+    .game-step-two .item-of-game {
+        margin-top: 20px;
+ 
+    }
+
+    .spock-and-paper {
+        justify-content: center;
+        gap: 100px;
+    }
+}
