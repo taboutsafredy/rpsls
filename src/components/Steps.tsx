@@ -1,7 +1,6 @@
-import confetti from "canvas-confetti"
 import React, { useCallback, useEffect, useState } from "react";
-import MakeChoice from "./choices/MakeChoices"
-import "../styles/Steps.css"
+import MakeChoice from "./choices/MakeChoices";
+import "../styles/Steps.css";
 import LoseOrWin from "./LoseOrWin";
 
 
@@ -11,7 +10,7 @@ enum Choice {
     Scissors = 'scissors',
     Spock = 'spock',
     Lizard = 'lizard'
-}
+};
 
 type R = Record<Choice, Choice[]>;
 
@@ -36,7 +35,7 @@ type Two = {
     setStartGame: Function, 
     score: number, 
     setScore: Function
-}
+};
 
 function Steps ({score, setScore}: {score:number, setScore: Function}) {
     
@@ -85,16 +84,13 @@ const StepTwo = ({choice, setStartGame, score, setScore}: Two) => {
     const getWinner = useCallback((housePicked: Choice , RULES: R, choice: Choice): string => {
         if (choice && RULES[housePicked as keyof R].includes(choice)) {
             setHAnimate(true);
-            return "LOSE";
+            return "YOU LOSE 😑";
         } else if (choice && RULES[choice as keyof R].includes(housePicked)) {
             setUAnimate(true);
             setScore((score: number) => score + 1); 
-            const setConfetti = confetti.create(document.getElementById('canvas') as HTMLCanvasElement, { useWorker: true });
-            setConfetti({ particleCount: 100, spread: 70, origin: { y:2 } });
-            setTimeout(() => { setConfetti.reset(); }, 1000);
-            return "WIN";
+            return "YOU WIN 🏆";
         } else {
-            return "🫂";
+            return "DRAW 😤";
         }
     }, [setScore]); 
  

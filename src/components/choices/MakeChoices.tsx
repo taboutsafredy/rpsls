@@ -34,7 +34,7 @@ function MakeChoice ({getChoice, onClick, Hanimate, Uanimate}: ChoiceProps ) {
             {choices
                 .filter((choice: Item) => choice.name === getChoice)
                 .map((currentChoice: Item, index: number) => (
-                    <div className={`${currentChoice.name} ${Uanimate || Hanimate ? "item-of-game animate" : "item-of-game"}`} key={index} onClick={onClick}>
+                    <div className={`${currentChoice.name} ${Uanimate || Hanimate ? "item-of-game win" : "item-of-game"}`} key={index} onClick={onClick}>
                         <img src={currentChoice.url} alt={currentChoice.name.toLocaleUpperCase()} />
                     </div>
                 ))}

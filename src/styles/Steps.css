@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     color: hsl(0, 0%, 100%);
+    animation: fadeIn .5s .5s cubic-bezier(.175,.885,.32,1.275) backwards;
 }
 
 .game-step-one {
@@ -15,7 +16,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
     background: url("../assets/images/bg-pentagon.svg");
     background-repeat: no-repeat;
     background-position: center;
@@ -33,15 +33,15 @@
     border-radius: 50%;
     padding: 20px;
     background-color: hsl(0, 0%, 100%);
-    transition: width 0.2s, height 0.2s, transform 1s;
+    opacity: 0.9;
+    transition: opacity 0.5s;
+    animation: fadeIn .5s cubic-bezier(.175,.885,.32,1.275);
     cursor: pointer;
 }
 
 .item-of-game:hover {
-    transform: translateY(-5px);
-    width: 147px;
-    height: 147px;
-    transition: width 0.2s, height 0.2s, transform 1s;
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 
 .item-of-game img  {
@@ -67,26 +67,26 @@
 
 .scissors{
     border-color: hsl(39, 89%, 49%);
-    box-shadow: 0 5px 0 hsl(40, 84%, 53%);
+    box-shadow: 0 5px 0 #c96d1d, inset 0 5px 0 rgba(96,110,133,.25);
 }
 
 .spock{
     border-color: hsl(189, 59%, 53%);
-    box-shadow: 0 5px 0  hsl(189, 58%, 57%);
+    box-shadow: 0 5px 0  #277abe, inset 0 5px 0 rgba(96,110,133,.25);
 }
 
 .paper{
     border-color: hsl(230, 89%, 62%);
-    box-shadow: 0 5px 0  hsl(230, 89%, 65%);
+    box-shadow: 0 5px 0  #2740be, inset 0 5px 0 rgba(96,110,133,.25);
 }
 
 .rock{
     border-color: hsl(349, 71%, 52%);
-    box-shadow: 0 5px 0  hsl(349, 70%, 56%);
+    box-shadow: 0 5px 0  #9e152e, inset 0 5px 0 rgba(96,110,133,.25);
 }
 .lizard{
     border-color: hsl(261, 73%, 60%);
-    box-shadow: 0 5px 0  hsl(261, 72%, 63%);
+    box-shadow: 0 5px 0  #7a27be, inset 0 5px 0 rgba(96,110,133,.25);
 }
 
 
@@ -97,33 +97,34 @@
     justify-content: center;
     align-items: center;
     gap: 75px;
+
 }
 
 .game-step-two .item-of-game {
-    width: 290px;
-    height: 290px;
+    width: 220px;
+    height: 220px;
     border-width: 35px;
     cursor: initial;
-    animation: none;
+
+    position: relative;
 }
 
-
-.game-step-two .item-of-game:hover {
-    transform: none;
-    transition: none;
-}
-
-.game-step-two .item-of-game.animate {
-    animation: winner 3s ease; 
-}
-
-@keyframes winner {
-    0% { transform: rotate(0deg); width: 0; }
-    100% { transform: rotate(360deg); width: auto;}
+.game-step-two .item-of-game.win::before {
+    width: 220%;
+    height: 220%;
+    overflow: hidden;
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle,rgba(39, 50, 82, 0) 0 40%,rgba(39,50,82,.5) 40% 60%,rgba(33,44,76,.5) 55% 80%,rgba(38,58,89,.5) 80% 100%);
+    z-index: 0;
+    opacity: .4;
+    animation: fadeIn 1s 1s cubic-bezier(.175,.885,.32,1.275) both,loadingSmaller 1s 1s cubic-bezier(.33,1,.68,1) infinite alternate-reverse;
 }
 
 .game-step-two .item-of-game img  {
     width: 60%;
+    z-index: 1;
 }
 
 
@@ -132,29 +133,25 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    gap: 60px;
+    gap: 50px;
+}
 
+.the-house-picked {
+    animation: loading 1s linear;
 }
 
 .lose-or-win {
-    width: 220px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-
-    animation: setResult 1s ease-in;
-}
-
-@keyframes setResult {
-    0% {width: 0;}
-    100% {width: 220px;}
 }
 
 .lose-or-win h1 {
     letter-spacing: 1px;
     font-size: 40px;
+    animation: fadeInText .5s .5s cubic-bezier(.175,.885,.32,1.275) both;
 }
 
 .play-again-btn {
@@ -167,6 +164,7 @@
     justify-content: center;
     align-items: center;
     transition: transform 0.3s;
+    animation: fadeIn .6s .6s cubic-bezier(.175,.885,.32,1.275) both;
     cursor: pointer;
 }
 
@@ -180,6 +178,7 @@
     color: hsl(229, 25%, 31%);
     letter-spacing: 2px;
     font-size: 14px;
+    animation: fadeInText .5s .5s cubic-bezier(.175,.885,.32,1.275) both;
 }
 
 @media (max-width: 950px) {
@@ -247,13 +246,6 @@
  
     }
 
-    .item-of-game:hover {
-        transform: translateY(-5px);
-        width: 92px;
-        height: 92px;
-        transition: width 0.2s, height 0.2s, transform 1s;
-    }
-
     .spock-and-paper {
         justify-content: center;
         gap: 150px;
@@ -319,13 +311,6 @@
     .lose-or-win h1 {
         letter-spacing: .5px;
         font-size: 30px;
-
-        animation: animateTitle 5s ease;
-    }
-
-    @keyframes animateTitle {
-        0%{opacity: 0;}
-        100%{opacity: 1;}
     }
 
     .lose-or-win .play-again-btn {
@@ -352,5 +337,50 @@
     .spock-and-paper {
         justify-content: center;
         gap: 100px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        font-size: 0
+    }
+}
+
+@keyframes loadingSmaller {
+    from {
+        transform: scale(.75)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+
+@keyframes loading {
+    0% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(.5)
+    }
+
+    75% {
+        transform: scale(.75)
+    }
+
+    100% {
+        transform: scale(1)
     }
 }

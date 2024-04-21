@@ -11,8 +11,8 @@ function Rules () {
 
     return(
         <div className="all-about-rules">
-            <div className="rules-descriptions" onClick={() => setShow(!show)}>
-                <span className="rules-title">
+            <div className="rules-descriptions">
+                <span className="rules-title"  onClick={() => setShow(!show)}>
                     RULES
                 </span>
             </div>
