@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/rpsls/static/css/main.4c908e6c.css",
-    "main.js": "/rpsls/static/js/main.6acb4711.js",
+    "main.css": "/rpsls/static/css/main.b53bf129.css",
+    "main.js": "/rpsls/static/js/main.a4622f56.js",
     "static/js/453.f8a98a8c.chunk.js": "/rpsls/static/js/453.f8a98a8c.chunk.js",
     "static/media/logo-bonus.svg": "/rpsls/static/media/logo-bonus.9bf8aeb80c2526dee7c67aa5c1b74ccc.svg",
     "static/media/image-rules-bonus.svg": "/rpsls/static/media/image-rules-bonus.513320fbf32ba9e4a81fba903a77b85f.svg",
@@ -13,12 +13,12 @@
     "static/media/icon-rock.svg": "/rpsls/static/media/icon-rock.476e90a9646a87bb3645d2f09f4f7fba.svg",
     "static/media/icon-close.svg": "/rpsls/static/media/icon-close.bde602ecd1a4e55e0c27137ed651e027.svg",
     "static/media/bg-pentagon.svg": "/rpsls/static/media/bg-pentagon.1ad6d36532b75eb7d82c.svg",
-    "main.4c908e6c.css.map": "/rpsls/static/css/main.4c908e6c.css.map",
-    "main.6acb4711.js.map": "/rpsls/static/js/main.6acb4711.js.map",
+    "main.b53bf129.css.map": "/rpsls/static/css/main.b53bf129.css.map",
+    "main.a4622f56.js.map": "/rpsls/static/js/main.a4622f56.js.map",
     "453.f8a98a8c.chunk.js.map": "/rpsls/static/js/453.f8a98a8c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4c908e6c.css",
-    "static/js/main.6acb4711.js"
+    "static/css/main.b53bf129.css",
+    "static/js/main.a4622f56.js"
   ]
 }
