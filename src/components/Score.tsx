@@ -1,6 +1,6 @@
-import "../styles/Score.css"
-import React from "react"
-import logo from "../assets/images/logo-bonus.svg"
+import "../styles/Score.css";
+import React from "react";
+import logo from "../assets/images/logo-bonus.svg";
 
 function Score ({score}: {score: number}) {
     

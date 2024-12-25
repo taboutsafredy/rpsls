@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Steps from './components/Steps';
 import Rules from './components/Rules';
 import Score from './components/Score';
-import WebApp from "@twa-dev/sdk";
 
 function App() {
   
@@ -16,7 +15,7 @@ function App() {
   return ( 
     <div className="app">
       <Score score={score}/>
-      <Steps score={score} setScore={setScore}/>
+      <Steps setScore={setScore}/>
       <Rules/>
     </div>
   );

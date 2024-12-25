@@ -2,7 +2,7 @@ import "../styles/Steps.css";
 import React, { useCallback, useEffect, useState } from "react";
 import Choice from "./choices/Choises";
 import LoseOrWin from "./LoseOrWin";
-
+import WebApp from "@twa-dev/sdk";
 
 enum EChoice {
     Rock = 'rock',
@@ -36,11 +36,12 @@ interface IStep {
     setScore: Function
 };
 
-function Steps ({ score, setScore }: { score: number, setScore: Function }) {
+function Steps ({ setScore }: { setScore: Function }) {
     
     const [startGame, setStartGame] = useState<boolean>(false);
     const [choice, setChoice] = useState<EChoice | null>(null);
     const handlePlayerChoice = (choice: EChoice | null) => {
+        WebApp.HapticFeedback.selectionChanged();
         setChoice(choice);
         setStartGame(!startGame);
     }

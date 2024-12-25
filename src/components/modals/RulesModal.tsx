@@ -1,11 +1,17 @@
-import React from "react"
-import "../../styles/RulesModal.css"
-import close from "../../assets/modal/icon-close.svg"
-import rules from"../../assets/modal/image-rules-bonus.svg"
-import { createPortal } from "react-dom"
+import React from "react";
+import close from "../../assets/modal/icon-close.svg";
+import rules from"../../assets/modal/image-rules-bonus.svg";
+import { createPortal } from "react-dom";
+import "../../styles/RulesModal.css";
+import WebApp from "@twa-dev/sdk";
+
 
 
 function RulesModal ({show, setShow}: {show: Boolean, setShow: Function}) {
+    const handleShow = () => {
+        WebApp.HapticFeedback.impactOccurred("medium");
+        setShow(!show);
+    };
     
     return createPortal(
         <>
@@ -14,7 +20,7 @@ function RulesModal ({show, setShow}: {show: Boolean, setShow: Function}) {
                     <div className="rules-modal">
                         <div className="rules-modal-title-and-close">
                             <h1 className="title">RULES</h1>
-                            <img src={close} alt="CLOSE MODAL!" onClick={() => setShow(!show)}/>
+                            <img src={close} alt="CLOSE MODAL!" onClick={() => handleShow()}/>
                         </div>
                         <div className="rules">
                             <img src={rules} alt="RULES" />
