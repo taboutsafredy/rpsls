@@ -32,11 +32,12 @@ const RULES: TRules = {
 
 interface IStep {
     choice: EChoice | null, 
-    setStartGame: Function, 
+    setStartGame: Function,
+    score: number,
     setScore: Function
 };
 
-function Steps ({ setScore }: { setScore: Function }) {
+function Steps ({ score, setScore }: { score: number, setScore: Function }) {
     
     const [startGame, setStartGame] = useState<boolean>(false);
     const [choice, setChoice] = useState<EChoice | null>(null);
@@ -50,7 +51,7 @@ function Steps ({ setScore }: { setScore: Function }) {
         <main id="main">
             <div className="game">
                 { startGame ?
-                    <StepTwo choice={choice}  setStartGame={setStartGame} setScore={setScore}/> 
+                    <StepTwo choice={choice}  setStartGame={setStartGame} score={score}  setScore={setScore}/> 
                     :
                     <StepOne handleChoice={ handlePlayerChoice } /> 
                 } 
@@ -58,7 +59,6 @@ function Steps ({ setScore }: { setScore: Function }) {
         </main>
     );
 }
-
 
 
 const StepOne = ({ handleChoice }: { handleChoice: Function }) => {
@@ -75,14 +75,22 @@ const StepOne = ({ handleChoice }: { handleChoice: Function }) => {
             </div>    
         </div>
     );
-}
+};
 
-const StepTwo = ({choice, setStartGame, setScore}: IStep) => {
+const StepTwo = ({choice, setStartGame, score, setScore}: IStep) => {
 
     const [houseChoice, setHouseChoice] = useState<EChoice | null>(null);
     const [result, setResult] = useState<string | null>(null);
     const [Hanimate, setHAnimate] = useState<boolean>(false);
     const [Uanimate, setUAnimate] = useState<boolean>(false);
+    const handleSaveScore = (score: number) => {
+        WebApp.CloudStorage.setItem("score", (score + 1).toString(), (error) => {
+            if (error) {
+                console.error("error occured while saving score: ", error);
+            }
+        });
+        setScore((score: number) => score + 1); 
+    };
 
     useEffect(() => {
         const houseChoice = CHOICES[Math.floor(Math.random() * CHOICES.length)];
@@ -95,7 +103,7 @@ const StepTwo = ({choice, setStartGame, setScore}: IStep) => {
             return "YOU LOSE 😑";
         } else if (choice && RULES[choice as keyof TRules].includes(housePicked)) {
             setUAnimate(true);
-            setScore((score: number) => score + 1); 
+            handleSaveScore(score);
             return "YOU WIN 🏆";
         } else {
             return "DRAW 😤";
@@ -124,7 +132,7 @@ const StepTwo = ({choice, setStartGame, setScore}: IStep) => {
             </div>
         </div>
     );
-}
+};
 
 
 export default Steps;
