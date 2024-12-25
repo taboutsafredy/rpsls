@@ -4,10 +4,7 @@ import RulesModal from "./modals/RulesModal";
 
 
 function Rules () {
-
-    type S = [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-
-    const [show, setShow]: S = useState<boolean>(false);
+    const [show, setShow] = useState<boolean>(false);
 
     return(
         <div className="all-about-rules">
@@ -18,7 +15,6 @@ function Rules () {
             </div>
             <RulesModal show={show} setShow={setShow}/>
         </div>
-
     );
 }
 

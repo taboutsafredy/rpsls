@@ -1,6 +1,6 @@
 import React from "react";
 
-function LoseOrWin ({loseOrWin, setStartGame}: {loseOrWin: string | null, setStartGame: Function}) {
+function LoseOrWin ({loseOrWin, setStartGame}: {loseOrWin: string, setStartGame: Function}) {
     return (
         <div className="lose-or-win">
             <h1>{loseOrWin}</h1>

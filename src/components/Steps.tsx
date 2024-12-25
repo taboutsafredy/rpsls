@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-import MakeChoice from "./choices/MakeChoices";
 import "../styles/Steps.css";
+import React, { useCallback, useEffect, useState } from "react";
+import Choice from "./choices/Choises";
 import LoseOrWin from "./LoseOrWin";
 
 
-enum Choice {
+enum EChoice {
     Rock = 'rock',
     Paper = 'paper',
     Scissors = 'scissors',
@@ -12,36 +12,35 @@ enum Choice {
     Lizard = 'lizard'
 };
 
-type R = Record<Choice, Choice[]>;
+type TRules = Record<EChoice, EChoice[]>;
 
-const CHOICES: Choice[] = [
-    Choice.Rock,
-    Choice.Paper,
-    Choice.Scissors,
-    Choice.Spock,
-    Choice.Lizard
+const CHOICES: EChoice[] = [
+    EChoice.Rock,
+    EChoice.Paper,
+    EChoice.Scissors,
+    EChoice.Spock,
+    EChoice.Lizard
 ];
 
-const RULES: R = {
-    [Choice.Rock]: [Choice.Scissors, Choice.Lizard],
-    [Choice.Paper]: [Choice.Rock, Choice.Spock],
-    [Choice.Scissors]: [Choice.Paper, Choice.Lizard],
-    [Choice.Spock]: [Choice.Rock, Choice.Scissors],
-    [Choice.Lizard]: [Choice.Paper, Choice.Spock]
+const RULES: TRules = {
+    [EChoice.Rock]: [EChoice.Scissors, EChoice.Lizard],
+    [EChoice.Paper]: [EChoice.Rock, EChoice.Spock],
+    [EChoice.Scissors]: [EChoice.Paper, EChoice.Lizard],
+    [EChoice.Spock]: [EChoice.Rock, EChoice.Scissors],
+    [EChoice.Lizard]: [EChoice.Paper, EChoice.Spock]
 };
 
-type Two = {
-    choice: Choice | null, 
+interface IStep {
+    choice: EChoice | null, 
     setStartGame: Function, 
-    score: number, 
     setScore: Function
 };
 
-function Steps ({score, setScore}: {score:number, setScore: Function}) {
+function Steps ({ score, setScore }: { score: number, setScore: Function }) {
     
     const [startGame, setStartGame] = useState<boolean>(false);
-    const [choice, setChoice] = useState<Choice | null>(null);
-    const handleChoice = (choice: Choice | null) => {
+    const [choice, setChoice] = useState<EChoice | null>(null);
+    const handlePlayerChoice = (choice: EChoice | null) => {
         setChoice(choice);
         setStartGame(!startGame);
     }
@@ -49,7 +48,11 @@ function Steps ({score, setScore}: {score:number, setScore: Function}) {
     return (
         <main id="main">
             <div className="game">
-                { !startGame ? <StepOne handleChoice={handleChoice}/> : <StepTwo choice={choice}  setStartGame={setStartGame} score={score} setScore={setScore}/> } 
+                { startGame ?
+                    <StepTwo choice={choice}  setStartGame={setStartGame} setScore={setScore}/> 
+                    :
+                    <StepOne handleChoice={ handlePlayerChoice } /> 
+                } 
             </div>
         </main>
     );
@@ -57,35 +60,39 @@ function Steps ({score, setScore}: {score:number, setScore: Function}) {
 
 
 
-const StepOne = ({handleChoice}: {handleChoice: Function}) => {
-    
+const StepOne = ({ handleChoice }: { handleChoice: Function }) => {
     return (
         <div className="game-step-one">
-            <MakeChoice getChoice="scissors" onClick={() => handleChoice("scissors")}/>
+            <Choice getChoice="scissors" onClick={() => handleChoice("scissors")}/>
             <div className="spock-and-paper" id="spock-and-paper">
-                <MakeChoice getChoice="spock" onClick={() => handleChoice("spock")}/>
-                <MakeChoice getChoice="paper" onClick={() => handleChoice("paper")}/>
+                <Choice getChoice="spock" onClick={() => handleChoice("spock")}/>
+                <Choice getChoice="paper" onClick={() => handleChoice("paper")}/>
             </div>
             <div className="rock-and-lizard" id="rock-and-lizard">
-                <MakeChoice getChoice="rock" onClick={() => handleChoice("rock")}/>
-                <MakeChoice getChoice="lizard" onClick={() => handleChoice("lizard")}/>
+                <Choice getChoice="rock" onClick={() => handleChoice("rock")}/>
+                <Choice getChoice="lizard" onClick={() => handleChoice("lizard")}/>
             </div>    
         </div>
     );
 }
 
-const StepTwo = ({choice, setStartGame, score, setScore}: Two) => {
+const StepTwo = ({choice, setStartGame, setScore}: IStep) => {
 
-    const [houseChoice, setHouseChoice] = useState<Choice | null>(null);
+    const [houseChoice, setHouseChoice] = useState<EChoice | null>(null);
     const [result, setResult] = useState<string | null>(null);
     const [Hanimate, setHAnimate] = useState<boolean>(false);
     const [Uanimate, setUAnimate] = useState<boolean>(false);
+
+    useEffect(() => {
+        const houseChoice = CHOICES[Math.floor(Math.random() * CHOICES.length)];
+        setHouseChoice(houseChoice);
+    }, []);
      
-    const getWinner = useCallback((housePicked: Choice , RULES: R, choice: Choice): string => {
-        if (choice && RULES[housePicked as keyof R].includes(choice)) {
+    const getWinner = useCallback((housePicked: EChoice , RULES: TRules, choice: EChoice): string => {
+        if (choice && RULES[housePicked as keyof TRules].includes(choice)) {
             setHAnimate(true);
             return "YOU LOSE 😑";
-        } else if (choice && RULES[choice as keyof R].includes(housePicked)) {
+        } else if (choice && RULES[choice as keyof TRules].includes(housePicked)) {
             setUAnimate(true);
             setScore((score: number) => score + 1); 
             return "YOU WIN 🏆";
@@ -93,11 +100,6 @@ const StepTwo = ({choice, setStartGame, score, setScore}: Two) => {
             return "DRAW 😤";
         }
     }, [setScore]); 
- 
-    useEffect(() => {
-            const houseChoice = CHOICES[Math.floor(Math.random() * CHOICES.length)];
-            setHouseChoice(houseChoice);
-    }, []);
 
     useEffect(() => {
         if (houseChoice === null || choice === null) return;
@@ -112,12 +114,12 @@ const StepTwo = ({choice, setStartGame, score, setScore}: Two) => {
         <div className="game-step-two">
             <div className="player-picked">
                 <h2>YOU PICKED</h2>
-                {choice && <MakeChoice getChoice={choice} Uanimate={Uanimate} />}
+                {choice && <Choice getChoice={choice} Uanimate={Uanimate} />}
             </div>
             {result && <LoseOrWin loseOrWin={result} setStartGame={setStartGame}/>}
             <div className="the-house-picked">
                 <h2>THE HOUSE PICKED</h2>
-                {houseChoice && <MakeChoice getChoice={houseChoice} Hanimate={Hanimate} />}
+                {houseChoice && <Choice getChoice={houseChoice} Hanimate={Hanimate} />}
             </div>
         </div>
     );
