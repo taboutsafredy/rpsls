@@ -10,14 +10,20 @@ function App() {
   const [score, setScore] = useState<number>(0);
 
   useEffect(() => {
-      WebApp.CloudStorage.getItem("score", (error, result) => {
-        if (error) {
-          console.log("error occured while getting score: ", error);
-          setScore(0);
-        } else if(result) {
-          setScore(Number(result));
-        }
-      });
+    WebApp.ready();
+    WebApp.expand();
+    WebApp.disableVerticalSwipes();
+    WebApp.setHeaderColor("#1f3756");
+    WebApp.setBottomBarColor("#1f3756");
+
+    WebApp.CloudStorage.getItem("score", (error, result) => {
+      if (error) {
+        setScore(0);
+        console.log("error occured while getting score: ", error);
+      } else if(result) {
+        setScore(Number(result));
+      }
+    });
   }, []);
 
   return ( 

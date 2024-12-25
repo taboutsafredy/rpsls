@@ -20,7 +20,6 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 400px;
-
 }
 
 .item-of-game {
@@ -59,7 +58,6 @@
     padding-bottom: 35px;
 }
 
-
 .rock-and-lizard {
     justify-content: center;
     gap: 50px;
@@ -92,7 +90,6 @@
 
 .game-step-two {
     width: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,7 +102,6 @@
     height: 220px;
     border-width: 35px;
     cursor: initial;
-
     position: relative;
 }
 
@@ -126,7 +122,6 @@
     width: 60%;
     z-index: 1;
 }
-
 
 .player-picked, .the-house-picked {
     display: flex;
@@ -159,7 +154,6 @@
     height: 50px;
     background: hsl(0, 0%, 100%);
     border-radius: 10px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,7 +166,6 @@
     transform: translateY(-5px);
     transition: transform 0.4s;
 }
-
 
 .set-other-game {
     color: hsl(229, 25%, 31%);
@@ -189,7 +182,6 @@
     .game-step-two .item-of-game {
         width: 200px;
         height: 200px;
-
     }
 
     .lose-or-win {
@@ -211,7 +203,6 @@
         width: 150px;
         height: 150px;
         border-width: 20px;
-
     }
     
     .lose-or-win {
@@ -235,7 +226,6 @@
         min-width: auto;
         max-width: 375px;
         max-height: 375px;
-    
         background-size:300px;
     }
 
@@ -257,7 +247,6 @@
 
     .game-step-two {
         width: 100%;
-    
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
@@ -298,7 +287,6 @@
     .game-step-two .lose-or-win {
         grid-column: 1 / span 2;
         grid-row: 2;
-
         width: 100%;
         justify-content: center;
         gap: 25px;
@@ -325,7 +313,6 @@
         min-width: auto;
         max-width: 325px;
         max-height: 325px;
-        
         background-size:250px;
     }
 
