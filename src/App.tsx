@@ -19,7 +19,7 @@ function App() {
     WebApp.CloudStorage.getItem("score", (error, result) => {
       if (error) {
         setScore(0);
-        console.log("error occured while getting score: ", error);
+        console.error("error occured while getting score: ", error);
       } else if(result) {
         setScore(Number(result));
       }
