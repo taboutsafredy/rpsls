@@ -1,8 +1,8 @@
+import "../../styles/RulesModal.css";
 import React from "react";
 import close from "../../assets/modal/icon-close.svg";
 import rules from"../../assets/modal/image-rules-bonus.svg";
 import { createPortal } from "react-dom";
-import "../../styles/RulesModal.css";
 import WebApp from "@twa-dev/sdk";
 
 
