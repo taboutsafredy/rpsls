@@ -17,11 +17,11 @@ function App() {
     WebApp.setBottomBarColor("#1f3756");
 
     WebApp.CloudStorage.getItem("score", (error, result) => {
-      if (error) {
-        setScore(0);
-        console.error("error occured while getting score: ", error);
-      } else if(result) {
+      if (result) {
         setScore(Number(result));
+      } else if(error) {
+        console.error("error occured while getting score: ", error);
+        setScore(0);
       }
     });
   }, []);

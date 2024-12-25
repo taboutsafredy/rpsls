@@ -19,10 +19,9 @@ body {
   min-height: 100vh;
   position: relative;
 
-  background:radial-gradient(134.34% 134.34%, rgb(31, 55, 87) 0%, rgb(19, 21, 55) 100%);
+  background: radial-gradient(134.34% 134.34%, rgb(31, 55, 87) 0%, rgb(19, 21, 55) 100%);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
