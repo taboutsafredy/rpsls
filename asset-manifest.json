@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rpsls/static/css/main.c7e85349.css",
-    "main.js": "/rpsls/static/js/main.1b5d801a.js",
+    "main.js": "/rpsls/static/js/main.af9b099a.js",
     "static/media/logo-bonus.svg": "/rpsls/static/media/logo-bonus.9bf8aeb80c2526dee7c67aa5c1b74ccc.svg",
     "static/media/image-rules-bonus.svg": "/rpsls/static/media/image-rules-bonus.513320fbf32ba9e4a81fba903a77b85f.svg",
     "static/media/icon-lizard.svg": "/rpsls/static/media/icon-lizard.0f83914cca1adc9454d1bdceb17610b0.svg",
@@ -13,10 +13,10 @@
     "static/media/icon-close.svg": "/rpsls/static/media/icon-close.bde602ecd1a4e55e0c27137ed651e027.svg",
     "static/media/bg-pentagon.svg": "/rpsls/static/media/bg-pentagon.1ad6d36532b75eb7d82c.svg",
     "main.c7e85349.css.map": "/rpsls/static/css/main.c7e85349.css.map",
-    "main.1b5d801a.js.map": "/rpsls/static/js/main.1b5d801a.js.map"
+    "main.af9b099a.js.map": "/rpsls/static/js/main.af9b099a.js.map"
   },
   "entrypoints": [
     "static/css/main.c7e85349.css",
-    "static/js/main.1b5d801a.js"
+    "static/js/main.af9b099a.js"
   ]
 }
